@@ -9,7 +9,7 @@
 #include "Raven_Game.h"
 #include "Raven_UserOptions.h"
 #include "2D/transformations.h"
-
+#include "fuzzy/FuzzyOperators.h"
 
 
 //------------------------- ctor ----------------------------------------------
@@ -231,6 +231,31 @@ void Raven_WeaponSystem::TakeAimAndShoot()const
   {
     m_pOwner->RotateFacingTowardPosition(m_pOwner->Pos()+ m_pOwner->Heading());
   }
+}
+
+void Raven_WeaponSystem::InitializeFuzzyModule(){
+  FuzzyVariable& DistToTarget = m_FuzzyModuleAim.CreateFLV("DistToTarget");
+  FzSet& Target_Close = DistToTarget.AddLeftShoulderSet("Target_Close",0,15,75);
+  FzSet& Target_Medium = DistToTarget.AddTriangularSet("Target_Medium",15,75,150);
+  FzSet& Target_Far = DistToTarget.AddTriangularSet("Target_Far",75,150,300);
+  
+  FuzzyVariable& Desirability = m_FuzzyModuleAim.CreateFLV("Desirability"); 
+  FzSet& IChooseYou = Desirability.AddRightShoulderSet("IChooseYou", 70, 90, 100);
+  FzSet& VeryDesirable = Desirability.AddTriangularSet("VeryDesirable", 50, 70, 90);
+  FzSet& Desirable = Desirability.AddTriangularSet("Desirable", 30, 50, 70);
+
+  FuzzyVariable& AmmoStatus = m_FuzzyModuleAim.CreateFLV("AmmoStatus");
+  FzSet& Ammo_Loads = AmmoStatus.AddRightShoulderSet("Ammo_Loads", 50, 80, 100);
+  FzSet& Ammo_AlmostFull = AmmoStatus.AddTriangularSet("Ammo_AlmostFull", 30, 50, 70);
+  FzSet& Ammo_Okay = AmmoStatus.AddTriangularSet("Ammo_Okay", 10, 30, 60);
+}
+
+//---------------------------- GetPrecision -----------------------------------
+//
+//-----------------------------------------------------------------------------
+double Raven_WeaponSystem::GetPrecision()
+{
+  
 }
 
 //---------------------------- AddNoiseToAim ----------------------------------

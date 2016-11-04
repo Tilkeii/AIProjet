@@ -13,6 +13,7 @@
 //-----------------------------------------------------------------------------
 #include <map>
 #include "2d/vector2d.h"
+#include "fuzzy\FuzzyModule.h";
 
 class Raven_Bot;
 class Raven_Weapon;
@@ -60,6 +61,15 @@ private:
   //adds a random deviation to the firing angle not greater than m_dAimAccuracy 
   //rads
   void        AddNoiseToAim(Vector2D& AimingPos)const;
+
+  //fuzzy logic is used to determine the desirability of a weapon. Each weapon
+  //owns its own instance of a fuzzy module because each has a different rule 
+  //set for inferring desirability.
+  FuzzyModule m_FuzzyModuleAim;
+
+  void	InitializeFuzzyModule();
+
+  double  GetPrecision();
 
 public:
 

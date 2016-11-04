@@ -88,7 +88,6 @@ double RocketLauncher::GetDesirability(double DistToTarget)
 void RocketLauncher::InitializeFuzzyModule()
 {
   FuzzyVariable& DistToTarget = m_FuzzyModule.CreateFLV("DistToTarget");
-
   FzSet& Target_Close = DistToTarget.AddLeftShoulderSet("Target_Close",0,15,75);
   FzSet& Target_Medium = DistToTarget.AddTriangularSet("Target_Medium",15,75,150);
   FzSet& Target_Far = DistToTarget.AddTriangularSet("Target_Far",75,150,300);
@@ -112,16 +111,16 @@ void RocketLauncher::InitializeFuzzyModule()
   FzSet& Ammo_AlmostOut = AmmoStatus.AddTriangularSet("Ammo_AlmostOut", 0, 0, 10);
 
 
-  m_FuzzyModule.AddRule(FzAND(Target_Close, Ammo_Loads), Undesirable);
-  m_FuzzyModule.AddRule(FzAND(Target_Close, Ammo_AlmostFull), Undesirable);
-  m_FuzzyModule.AddRule(FzAND(Target_Close, Ammo_Okay), Undesirable);
-  m_FuzzyModule.AddRule(FzAND(Target_Close, Ammo_Low), Undesirable);
-  m_FuzzyModule.AddRule(FzAND(Target_Close, Ammo_AlmostOut), Undesirable);
+  m_FuzzyModule.AddRule(FzAND(Target_Close, Ammo_Loads), ForgetIt);
+  m_FuzzyModule.AddRule(FzAND(Target_Close, Ammo_AlmostFull), ForgetIt);
+  m_FuzzyModule.AddRule(FzAND(Target_Close, Ammo_Okay), ForgetIt);
+  m_FuzzyModule.AddRule(FzAND(Target_Close, Ammo_Low), ForgetIt);
+  m_FuzzyModule.AddRule(FzAND(Target_Close, Ammo_AlmostOut), ForgetIt);
 
   m_FuzzyModule.AddRule(FzAND(Target_Medium, Ammo_Loads), Desirable);
   m_FuzzyModule.AddRule(FzAND(Target_Medium, Ammo_AlmostFull), Desirable);
   m_FuzzyModule.AddRule(FzAND(Target_Medium, Ammo_Okay), Undesirable);
-  m_FuzzyModule.AddRule(FzAND(Target_Medium, Ammo_Low), Undesirable);
+  m_FuzzyModule.AddRule(FzAND(Target_Medium, Ammo_Low), ForgetIt);
   m_FuzzyModule.AddRule(FzAND(Target_Medium, Ammo_AlmostOut), ForgetIt);
 
   m_FuzzyModule.AddRule(FzAND(Target_Far, Ammo_Loads), IChooseYou);
