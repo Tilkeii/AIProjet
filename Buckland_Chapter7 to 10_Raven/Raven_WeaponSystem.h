@@ -70,7 +70,7 @@ private:
   void	InitializeFuzzyModule();
 
   double  GetPrecision(double distToTarget, Vector2D velocity, double timeVisibility);
-  double  m_dLastDesirabilityScore;
+  double  m_dLastDeviationScore;
   float speed;
 
 public:

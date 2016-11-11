@@ -259,10 +259,10 @@ void Raven_WeaponSystem::InitializeFuzzyModule(){
   FzSet& Velocity_medium = Velocity.AddTriangularSet("Velocity_medium", 15, 75, 150);
   FzSet& Velocity_slow = Velocity.AddLeftShoulderSet("Velocity_slow", 0, 15, 45);
 
-  FuzzyVariable& Desirability = m_FuzzyModuleAim.CreateFLV("Deviation"); 
-  FzSet& VeryDesirable = Desirability.AddRightShoulderSet("VeryDesirable", 75, 150, 300);
-  FzSet& Desirable = Desirability.AddTriangularSet("Desirable", 15, 75, 150);
-  FzSet& Undesirable = Desirability.AddLeftShoulderSet("Undesirable", 0, 15, 45);
+  FuzzyVariable& Deviation = m_FuzzyModuleAim.CreateFLV("Deviation"); 
+  FzSet& BigDeviation = Deviation.AddRightShoulderSet("BigDeviation", 75, 150, 300);
+  FzSet& DeviationMedium = Deviation.AddTriangularSet("DeviationMedium", 15, 75, 150);
+  FzSet& SmallDeviation = Deviation.AddLeftShoulderSet("SmallDeviation", 0, 15, 45);
 
   /*m_FuzzyModuleAim.AddRule(FzAND(Target_Close, Ammo_Loads), ForgetIt);
   m_FuzzyModuleAim.AddRule(FzAND(Target_Close, Ammo_AlmostFull), ForgetIt);
@@ -288,9 +288,9 @@ double Raven_WeaponSystem::GetPrecision(double distToTarget, Vector2D velocity, 
 	m_FuzzyModuleAim.Fuzzify("Speed", speed);
 	m_FuzzyModuleAim.Fuzzify("Visibility", timeVisibility);
 
-	m_dLastDesirabilityScore = m_FuzzyModuleAim.DeFuzzify("Desirability", FuzzyModule::max_av);
+	m_dLastDeviationScore = m_FuzzyModuleAim.DeFuzzify("Deviation", FuzzyModule::max_av);
 
-	return m_dLastDesirabilityScore;
+	return m_dLastDeviationScore;
 }
 
 //---------------------------- AddNoiseToAim ----------------------------------
