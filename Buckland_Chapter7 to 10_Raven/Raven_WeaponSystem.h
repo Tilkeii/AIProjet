@@ -60,7 +60,7 @@ private:
 
   //adds a random deviation to the firing angle not greater than m_dAimAccuracy 
   //rads
-  void        AddNoiseToAim(Vector2D& AimingPos)const;
+  void        AddNoiseToAim(Vector2D& AimingPos, double precision)const;
 
   //fuzzy logic is used to determine the desirability of a weapon. Each weapon
   //owns its own instance of a fuzzy module because each has a different rule 
@@ -69,7 +69,9 @@ private:
 
   void	InitializeFuzzyModule();
 
-  double  GetPrecision();
+  double  GetPrecision(double distToTarget, Vector2D velocity, double timeVisibility);
+  double  m_dLastDesirabilityScore;
+  float speed;
 
 public:
 
@@ -86,7 +88,7 @@ public:
   //this method aims the bot's current weapon at the target (if there is a
   //target) and, if aimed correctly, fires a round. (Called each update-step
   //from Raven_Bot::Update)
-  void          TakeAimAndShoot()const;
+  void          TakeAimAndShoot();
 
   //this method determines the most appropriate weapon to use given the current
   //game state. (Called every n update-steps from Raven_Bot::Update)

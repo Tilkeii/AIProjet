@@ -173,18 +173,27 @@ void Raven_WeaponSystem::ChangeWeapon(unsigned int type)
 //  this method aims the bots current weapon at the target (if there is a
 //  target) and, if aimed correctly, fires a round
 //-----------------------------------------------------------------------------
-void Raven_WeaponSystem::TakeAimAndShoot()const
+void Raven_WeaponSystem::TakeAimAndShoot()
 {
   //aim the weapon only if the current target is shootable or if it has only
   //very recently gone out of view (this latter condition is to ensure the 
   //weapon is aimed at the target even if it temporarily dodges behind a wall
   //or other cover)
+
   if (m_pOwner->GetTargetSys()->isTargetShootable() ||
       (m_pOwner->GetTargetSys()->GetTimeTargetHasBeenOutOfView() < 
        m_dAimPersistance) )
   {
     //the position the weapon will be aimed at
     Vector2D AimingPos = m_pOwner->GetTargetBot()->Pos();
+
+	double time = m_pOwner->GetTargetSys()->GetTimeTargetHasBeenVisible();
+	Vector2D velocity = m_pOwner->GetTargetSys()->GetTarget()->Velocity();
+	Vector2D PosOwner = m_pOwner->GetTargetBot()->Pos();
+	Vector2D PosBot = m_pOwner->GetTargetSys()->GetTarget()->Pos();
+	double distToTarget = (PosBot - PosOwner).Length();
+
+	double precision = GetPrecision(distToTarget, velocity, time); // const enlevé
     
     //if the current weapon is not an instant hit type gun the target position
     //must be adjusted to take into account the predicted movement of the 
@@ -202,7 +211,8 @@ void Raven_WeaponSystem::TakeAimAndShoot()const
             m_dReactionTime) &&
            m_pOwner->hasLOSto(AimingPos) )
       {
-        AddNoiseToAim(AimingPos);
+
+        AddNoiseToAim(AimingPos, precision);
 
         GetCurrentWeapon()->ShootAt(AimingPos);
       }
@@ -217,7 +227,7 @@ void Raven_WeaponSystem::TakeAimAndShoot()const
            (m_pOwner->GetTargetSys()->GetTimeTargetHasBeenVisible() >
             m_dReactionTime) )
       {
-        AddNoiseToAim(AimingPos);
+        AddNoiseToAim(AimingPos, precision);
         
         GetCurrentWeapon()->ShootAt(AimingPos);
       }
@@ -235,27 +245,52 @@ void Raven_WeaponSystem::TakeAimAndShoot()const
 
 void Raven_WeaponSystem::InitializeFuzzyModule(){
   FuzzyVariable& DistToTarget = m_FuzzyModuleAim.CreateFLV("DistToTarget");
-  FzSet& Target_Close = DistToTarget.AddLeftShoulderSet("Target_Close",0,15,75);
-  FzSet& Target_Medium = DistToTarget.AddTriangularSet("Target_Medium",15,75,150);
-  FzSet& Target_Far = DistToTarget.AddTriangularSet("Target_Far",75,150,300);
+  FzSet& Target_Close = DistToTarget.AddLeftShoulderSet("Target_Close", 0, 15, 45);
+  FzSet& Target_Medium = DistToTarget.AddTriangularSet("Target_Medium", 15, 75, 150);
+  FzSet& Target_Far = DistToTarget.AddRightShoulderSet("Target_Far", 75, 150, 300);
   
-  FuzzyVariable& Desirability = m_FuzzyModuleAim.CreateFLV("Desirability"); 
-  FzSet& IChooseYou = Desirability.AddRightShoulderSet("IChooseYou", 70, 90, 100);
-  FzSet& VeryDesirable = Desirability.AddTriangularSet("VeryDesirable", 50, 70, 90);
-  FzSet& Desirable = Desirability.AddTriangularSet("Desirable", 30, 50, 70);
+  FuzzyVariable& TimeVisible = m_FuzzyModuleAim.CreateFLV("TimeVisible");
+  FzSet& TimeVisible_fast = TimeVisible.AddRightShoulderSet("TimeVisible_fast", 4, 6, 8);
+  FzSet& TimeVisible_medium = TimeVisible.AddTriangularSet("TimeVisible_medium", 2, 4, 6);
+  FzSet& TimeVisible_slow = TimeVisible.AddLeftShoulderSet("TimeVisible_slow", 0, 2, 4);
 
-  FuzzyVariable& AmmoStatus = m_FuzzyModuleAim.CreateFLV("AmmoStatus");
-  FzSet& Ammo_Loads = AmmoStatus.AddRightShoulderSet("Ammo_Loads", 50, 80, 100);
-  FzSet& Ammo_AlmostFull = AmmoStatus.AddTriangularSet("Ammo_AlmostFull", 30, 50, 70);
-  FzSet& Ammo_Okay = AmmoStatus.AddTriangularSet("Ammo_Okay", 10, 30, 60);
+  FuzzyVariable& Velocity = m_FuzzyModuleAim.CreateFLV("Velocity");
+  FzSet& Velocity_fast = Velocity.AddRightShoulderSet("Velocity_fast", 75, 150, 300);
+  FzSet& Velocity_medium = Velocity.AddTriangularSet("Velocity_medium", 15, 75, 150);
+  FzSet& Velocity_slow = Velocity.AddLeftShoulderSet("Velocity_slow", 0, 15, 45);
+
+  FuzzyVariable& Desirability = m_FuzzyModuleAim.CreateFLV("Deviation"); 
+  FzSet& VeryDesirable = Desirability.AddRightShoulderSet("VeryDesirable", 75, 150, 300);
+  FzSet& Desirable = Desirability.AddTriangularSet("Desirable", 15, 75, 150);
+  FzSet& Undesirable = Desirability.AddLeftShoulderSet("Undesirable", 0, 15, 45);
+
+  /*m_FuzzyModuleAim.AddRule(FzAND(Target_Close, Ammo_Loads), ForgetIt);
+  m_FuzzyModuleAim.AddRule(FzAND(Target_Close, Ammo_AlmostFull), ForgetIt);
+  m_FuzzyModuleAim.AddRule(FzAND(Target_Close, Ammo_Okay), ForgetIt);
+
+  m_FuzzyModuleAim.AddRule(FzAND(Target_Close, Ammo_Loads), ForgetIt);
+  m_FuzzyModuleAim.AddRule(FzAND(Target_Close, Ammo_AlmostFull), ForgetIt);
+  m_FuzzyModuleAim.AddRule(FzAND(Target_Close, Ammo_Okay), ForgetIt);
+
+  m_FuzzyModuleAim.AddRule(FzAND(Target_Close, Ammo_Loads), ForgetIt);
+  m_FuzzyModuleAim.AddRule(FzAND(Target_Close, Ammo_AlmostFull), ForgetIt);
+  m_FuzzyModuleAim.AddRule(FzAND(Target_Close, Ammo_Okay), ForgetIt);*/
 }
 
 //---------------------------- GetPrecision -----------------------------------
 //
 //-----------------------------------------------------------------------------
-double Raven_WeaponSystem::GetPrecision()
+double Raven_WeaponSystem::GetPrecision(double distToTarget, Vector2D velocity, double timeVisibility)
 {
-  
+	speed = sqrt(std::pow(velocity.x, 2) + std::pow(velocity.y, 2));
+
+	m_FuzzyModuleAim.Fuzzify("DistToTarget", distToTarget);
+	m_FuzzyModuleAim.Fuzzify("Speed", speed);
+	m_FuzzyModuleAim.Fuzzify("Visibility", timeVisibility);
+
+	m_dLastDesirabilityScore = m_FuzzyModuleAim.DeFuzzify("Desirability", FuzzyModule::max_av);
+
+	return m_dLastDesirabilityScore;
 }
 
 //---------------------------- AddNoiseToAim ----------------------------------
@@ -263,11 +298,11 @@ double Raven_WeaponSystem::GetPrecision()
 //  adds a random deviation to the firing angle not greater than m_dAimAccuracy 
 //  rads
 //-----------------------------------------------------------------------------
-void Raven_WeaponSystem::AddNoiseToAim(Vector2D& AimingPos)const
+void Raven_WeaponSystem::AddNoiseToAim(Vector2D& AimingPos, double precision)const
 {
   Vector2D toPos = AimingPos - m_pOwner->Pos();
 
-  Vec2DRotateAroundOrigin(toPos, RandInRange(-m_dAimAccuracy, m_dAimAccuracy));
+  Vec2DRotateAroundOrigin(toPos, RandInRange(-precision, precision));
 
   AimingPos = toPos + m_pOwner->Pos();
 }
