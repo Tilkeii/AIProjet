@@ -57,6 +57,8 @@ void Raven_WeaponSystem::Initialize()
   m_WeaponMap[type_shotgun]         = 0;
   m_WeaponMap[type_rail_gun]        = 0;
   m_WeaponMap[type_rocket_launcher] = 0;
+
+  InitializeFuzzyModule();
 }
 
 //-------------------------------- SelectWeapon -------------------------------
@@ -201,7 +203,7 @@ void Raven_WeaponSystem::TakeAimAndShoot()
     if (GetCurrentWeapon()->GetType() == type_rocket_launcher ||
         GetCurrentWeapon()->GetType() == type_blaster)
     {
-      AimingPos = PredictFuturePositionOfTarget();
+      //AimingPos = PredictFuturePositionOfTarget();
 
       //if the weapon is aimed correctly, there is line of sight between the
       //bot and the aiming position and it has been in view for a period longer
@@ -247,10 +249,10 @@ void Raven_WeaponSystem::InitializeFuzzyModule(){
   FuzzyVariable& DistToTarget = m_FuzzyModuleAim.CreateFLV("DistToTarget");
   FzSet& Target_Close = DistToTarget.AddLeftShoulderSet("Target_Close", 0, 15, 45);
   FzSet& Target_Medium = DistToTarget.AddTriangularSet("Target_Medium", 15, 75, 150);
-  FzSet& Target_Far = DistToTarget.AddRightShoulderSet("Target_Far", 75, 150, 300);
+  FzSet& Target_Far = DistToTarget.AddRightShoulderSet("Target_Far", 75, 150, 10000);
   
   FuzzyVariable& TimeVisible = m_FuzzyModuleAim.CreateFLV("TimeVisible");
-  FzSet& TimeVisible_fast = TimeVisible.AddRightShoulderSet("TimeVisible_fast", 4, 6, 8);
+  FzSet& TimeVisible_fast = TimeVisible.AddRightShoulderSet("TimeVisible_fast", 4, 6, 100);
   FzSet& TimeVisible_medium = TimeVisible.AddTriangularSet("TimeVisible_medium", 2, 4, 6);
   FzSet& TimeVisible_slow = TimeVisible.AddLeftShoulderSet("TimeVisible_slow", 0, 2, 4);
 
@@ -260,9 +262,9 @@ void Raven_WeaponSystem::InitializeFuzzyModule(){
   FzSet& Velocity_slow = Velocity.AddLeftShoulderSet("Velocity_slow", 0, 15, 45);
 
   FuzzyVariable& Deviation = m_FuzzyModuleAim.CreateFLV("Deviation"); 
-  FzSet& BigDeviation = Deviation.AddRightShoulderSet("BigDeviation", 75, 150, 300);
-  FzSet& DeviationMedium = Deviation.AddTriangularSet("DeviationMedium", 15, 75, 150);
-  FzSet& SmallDeviation = Deviation.AddLeftShoulderSet("SmallDeviation", 0, 15, 45);
+  FzSet& BigDeviation = Deviation.AddRightShoulderSet("BigDeviation", 0.15, 0.25, 0.3);
+  FzSet& DeviationMedium = Deviation.AddTriangularSet("DeviationMedium", 0.05, 0.15, 0.2);
+  FzSet& SmallDeviation = Deviation.AddLeftShoulderSet("SmallDeviation", 0, 0.05, 0.1);
 
 
   // Target Close //
@@ -314,8 +316,8 @@ double Raven_WeaponSystem::GetPrecision(double distToTarget, Vector2D velocity, 
 	speed = sqrt(std::pow(velocity.x, 2) + std::pow(velocity.y, 2));
 
 	m_FuzzyModuleAim.Fuzzify("DistToTarget", distToTarget);
-	m_FuzzyModuleAim.Fuzzify("Speed", speed);
-	m_FuzzyModuleAim.Fuzzify("Visibility", timeVisibility);
+	m_FuzzyModuleAim.Fuzzify("Velocity", speed);
+	m_FuzzyModuleAim.Fuzzify("TimeVisible", timeVisibility);
 
 	m_dLastDeviationScore = m_FuzzyModuleAim.DeFuzzify("Deviation", FuzzyModule::max_av);
 
