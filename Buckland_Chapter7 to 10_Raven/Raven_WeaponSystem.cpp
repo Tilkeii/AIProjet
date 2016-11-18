@@ -264,17 +264,46 @@ void Raven_WeaponSystem::InitializeFuzzyModule(){
   FzSet& DeviationMedium = Deviation.AddTriangularSet("DeviationMedium", 15, 75, 150);
   FzSet& SmallDeviation = Deviation.AddLeftShoulderSet("SmallDeviation", 0, 15, 45);
 
-  /*m_FuzzyModuleAim.AddRule(FzAND(Target_Close, Ammo_Loads), ForgetIt);
-  m_FuzzyModuleAim.AddRule(FzAND(Target_Close, Ammo_AlmostFull), ForgetIt);
-  m_FuzzyModuleAim.AddRule(FzAND(Target_Close, Ammo_Okay), ForgetIt);
 
-  m_FuzzyModuleAim.AddRule(FzAND(Target_Close, Ammo_Loads), ForgetIt);
-  m_FuzzyModuleAim.AddRule(FzAND(Target_Close, Ammo_AlmostFull), ForgetIt);
-  m_FuzzyModuleAim.AddRule(FzAND(Target_Close, Ammo_Okay), ForgetIt);
+  // Target Close //
+  m_FuzzyModuleAim.AddRule(FzAND(Target_Close, TimeVisible_fast, Velocity_fast ), BigDeviation);
+  m_FuzzyModuleAim.AddRule(FzAND(Target_Close, TimeVisible_fast, Velocity_medium ), BigDeviation );
+  m_FuzzyModuleAim.AddRule(FzAND(Target_Close, TimeVisible_fast, Velocity_slow ), DeviationMedium );
 
-  m_FuzzyModuleAim.AddRule(FzAND(Target_Close, Ammo_Loads), ForgetIt);
-  m_FuzzyModuleAim.AddRule(FzAND(Target_Close, Ammo_AlmostFull), ForgetIt);
-  m_FuzzyModuleAim.AddRule(FzAND(Target_Close, Ammo_Okay), ForgetIt);*/
+  m_FuzzyModuleAim.AddRule(FzAND(Target_Close, TimeVisible_medium, Velocity_fast ), BigDeviation);
+  m_FuzzyModuleAim.AddRule(FzAND(Target_Close, TimeVisible_medium, Velocity_medium ), DeviationMedium );
+  m_FuzzyModuleAim.AddRule(FzAND(Target_Close, TimeVisible_medium, Velocity_slow ), SmallDeviation );
+
+  m_FuzzyModuleAim.AddRule(FzAND(Target_Close, TimeVisible_slow, Velocity_fast ), DeviationMedium);
+  m_FuzzyModuleAim.AddRule(FzAND(Target_Close, TimeVisible_slow, Velocity_medium ), SmallDeviation );
+  m_FuzzyModuleAim.AddRule(FzAND(Target_Close, TimeVisible_slow, Velocity_slow ), SmallDeviation );
+
+  // Target Medium
+  m_FuzzyModuleAim.AddRule(FzAND(Target_Medium, TimeVisible_fast, Velocity_fast ), BigDeviation);
+  m_FuzzyModuleAim.AddRule(FzAND(Target_Medium, TimeVisible_fast, Velocity_medium ), BigDeviation );
+  m_FuzzyModuleAim.AddRule(FzAND(Target_Medium, TimeVisible_fast, Velocity_slow ), DeviationMedium );
+
+  m_FuzzyModuleAim.AddRule(FzAND(Target_Medium, TimeVisible_medium, Velocity_fast ), BigDeviation);
+  m_FuzzyModuleAim.AddRule(FzAND(Target_Medium, TimeVisible_medium, Velocity_medium ), DeviationMedium );
+  m_FuzzyModuleAim.AddRule(FzAND(Target_Medium, TimeVisible_medium, Velocity_slow ), SmallDeviation );
+
+  m_FuzzyModuleAim.AddRule(FzAND(Target_Medium, TimeVisible_slow, Velocity_fast ), DeviationMedium);
+  m_FuzzyModuleAim.AddRule(FzAND(Target_Medium, TimeVisible_slow, Velocity_medium ), SmallDeviation );
+  m_FuzzyModuleAim.AddRule(FzAND(Target_Medium, TimeVisible_slow, Velocity_slow ), SmallDeviation );
+
+  //Target Far
+  m_FuzzyModuleAim.AddRule(FzAND(Target_Far, TimeVisible_fast, Velocity_fast ), BigDeviation);
+  m_FuzzyModuleAim.AddRule(FzAND(Target_Far, TimeVisible_fast, Velocity_medium ), BigDeviation );
+  m_FuzzyModuleAim.AddRule(FzAND(Target_Far, TimeVisible_fast, Velocity_slow ), DeviationMedium );
+
+  m_FuzzyModuleAim.AddRule(FzAND(Target_Far, TimeVisible_medium, Velocity_fast ), BigDeviation);
+  m_FuzzyModuleAim.AddRule(FzAND(Target_Far, TimeVisible_medium, Velocity_medium ), DeviationMedium );
+  m_FuzzyModuleAim.AddRule(FzAND(Target_Far, TimeVisible_medium, Velocity_slow ), SmallDeviation );
+
+  m_FuzzyModuleAim.AddRule(FzAND(Target_Far, TimeVisible_slow, Velocity_fast ), DeviationMedium);
+  m_FuzzyModuleAim.AddRule(FzAND(Target_Far, TimeVisible_slow, Velocity_medium ), DeviationMedium );
+  m_FuzzyModuleAim.AddRule(FzAND(Target_Far, TimeVisible_slow, Velocity_slow ), DeviationMedium );
+  
 }
 
 //---------------------------- GetPrecision -----------------------------------
