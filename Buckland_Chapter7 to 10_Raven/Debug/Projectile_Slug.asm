@@ -690,10 +690,6 @@ CONST	ENDS
 CONST	SEGMENT
 ?hex@?$_Iosb@H@std@@2W4_Fmtflags@12@B DD 0800H		; std::_Iosb<int>::hex
 CONST	ENDS
-;	COMDAT ?oct@?$_Iosb@H@std@@2W4_Fmtflags@12@B
-CONST	SEGMENT
-?oct@?$_Iosb@H@std@@2W4_Fmtflags@12@B DD 0400H		; std::_Iosb<int>::oct
-CONST	ENDS
 CONST	SEGMENT
 _SmallestDelay DQ 03fd0000000000000r		; 0.25
 _SEND_MSG_IMMEDIATELY DQ 00000000000000000r	; 0
@@ -714,16 +710,20 @@ _colors	DD	0ffH
 	DD	0ffff00H
 	DD	0c8c8c8H
 	DD	0e6e6ffH
-$SG163736 DB	'Slug_MaxForce', 00H
+$SG163739 DB	'Slug_MaxForce', 00H
 	ORG $+2
-$SG163737 DB	'Slug_Mass', 00H
+$SG163740 DB	'Slug_Mass', 00H
 	ORG $+2
-$SG163738 DB	'Slug_MaxSpeed', 00H
+$SG163741 DB	'Slug_MaxSpeed', 00H
 	ORG $+2
-$SG163739 DB	'Slug_Scale', 00H
+$SG163742 DB	'Slug_Scale', 00H
 	ORG $+1
-$SG163740 DB	'Slug_Damage', 00H
-$SG163741 DB	'Slug_Persistance', 00H
+$SG163743 DB	'Slug_Damage', 00H
+$SG163744 DB	'Slug_Persistance', 00H
+CONST	ENDS
+;	COMDAT ?oct@?$_Iosb@H@std@@2W4_Fmtflags@12@B
+CONST	SEGMENT
+?oct@?$_Iosb@H@std@@2W4_Fmtflags@12@B DD 0400H		; std::_Iosb<int>::oct
 CONST	ENDS
 ;	COMDAT ?dec@?$_Iosb@H@std@@2W4_Fmtflags@12@B
 CONST	SEGMENT
@@ -7651,24 +7651,6 @@ _target$ = 12						; size = 16
 	lea	eax, DWORD PTR __$EHRec$[ebp]
 	mov	DWORD PTR fs:0, eax
 	mov	DWORD PTR _this$[ebp], ecx
-	push	OFFSET $SG163736
-	call	?Instance@Raven_Scriptor@@SAPAV1@XZ	; Raven_Scriptor::Instance
-	mov	ecx, eax
-	call	?GetDouble@Scriptor@@QAENPAD@Z		; Scriptor::GetDouble
-	sub	esp, 8
-	fstp	QWORD PTR [esp]
-	push	OFFSET $SG163737
-	call	?Instance@Raven_Scriptor@@SAPAV1@XZ	; Raven_Scriptor::Instance
-	mov	ecx, eax
-	call	?GetDouble@Scriptor@@QAENPAD@Z		; Scriptor::GetDouble
-	sub	esp, 8
-	fstp	QWORD PTR [esp]
-	push	OFFSET $SG163738
-	call	?Instance@Raven_Scriptor@@SAPAV1@XZ	; Raven_Scriptor::Instance
-	mov	ecx, eax
-	call	?GetDouble@Scriptor@@QAENPAD@Z		; Scriptor::GetDouble
-	sub	esp, 8
-	fstp	QWORD PTR [esp]
 	push	OFFSET $SG163739
 	call	?Instance@Raven_Scriptor@@SAPAV1@XZ	; Raven_Scriptor::Instance
 	mov	ecx, eax
@@ -7676,6 +7658,24 @@ _target$ = 12						; size = 16
 	sub	esp, 8
 	fstp	QWORD PTR [esp]
 	push	OFFSET $SG163740
+	call	?Instance@Raven_Scriptor@@SAPAV1@XZ	; Raven_Scriptor::Instance
+	mov	ecx, eax
+	call	?GetDouble@Scriptor@@QAENPAD@Z		; Scriptor::GetDouble
+	sub	esp, 8
+	fstp	QWORD PTR [esp]
+	push	OFFSET $SG163741
+	call	?Instance@Raven_Scriptor@@SAPAV1@XZ	; Raven_Scriptor::Instance
+	mov	ecx, eax
+	call	?GetDouble@Scriptor@@QAENPAD@Z		; Scriptor::GetDouble
+	sub	esp, 8
+	fstp	QWORD PTR [esp]
+	push	OFFSET $SG163742
+	call	?Instance@Raven_Scriptor@@SAPAV1@XZ	; Raven_Scriptor::Instance
+	mov	ecx, eax
+	call	?GetDouble@Scriptor@@QAENPAD@Z		; Scriptor::GetDouble
+	sub	esp, 8
+	fstp	QWORD PTR [esp]
+	push	OFFSET $SG163743
 	call	?Instance@Raven_Scriptor@@SAPAV1@XZ	; Raven_Scriptor::Instance
 	mov	ecx, eax
 	call	?GetInt@Scriptor@@QAEHPAD@Z		; Scriptor::GetInt
@@ -7729,7 +7729,7 @@ _target$ = 12						; size = 16
 	mov	DWORD PTR __$EHRec$[ebp+8], 0
 	mov	ecx, DWORD PTR _this$[ebp]
 	mov	DWORD PTR [ecx], OFFSET ??_7Slug@@6B@
-	push	OFFSET $SG163741
+	push	OFFSET $SG163744
 	call	?Instance@Raven_Scriptor@@SAPAV1@XZ	; Raven_Scriptor::Instance
 	mov	ecx, eax
 	call	?GetDouble@Scriptor@@QAENPAD@Z		; Scriptor::GetDouble

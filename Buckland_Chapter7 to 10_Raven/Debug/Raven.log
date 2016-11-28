@@ -1,14 +1,15 @@
-﻿La génération a démarré 2016-11-28 15:41:38.
+﻿La génération a démarré 2016-11-28 18:10:47.
      1>Projet "C:\Users\Flo\Desktop\AIProjet\Buckland_Chapter7 to 10_Raven\Raven.vcxproj" sur le nœud 2 (Build cible(s)).
      1>ClCompile:
-         D:\Logiciel\Visual Studio 2012\VC\bin\CL.exe /c /I../common /Zi /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _VC80_UPGRADE=0x0600 /D _MBCS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /FAs /Fa".\Debug/" /Fo".\Debug/" /Fd".\Debug/vc110.pdb" /FR".\Debug\\" /Gd /TP /analyze- /errorReport:prompt /Zm200  goals\Goal_AttackTarget.cpp goals\Goal_Think.cpp
-         Goal_Think.cpp
-         Goal_AttackTarget.cpp
+         D:\Logiciel\Visual Studio 2012\VC\bin\CL.exe /c /I../common /Zi /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _VC80_UPGRADE=0x0600 /D _MBCS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /FAs /Fa".\Debug/" /Fo".\Debug/" /Fd".\Debug/vc110.pdb" /FR".\Debug\\" /Gd /TP /analyze- /errorReport:prompt /Zm200  Projectile_Knife.cpp Weapon_Knife.cpp
+         Weapon_Knife.cpp
+         Projectile_Knife.cpp
          Génération de code en cours...
        Link:
          D:\Logiciel\Visual Studio 2012\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:".\Debug/Raven.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /NODEFAULTLIB:libcmt /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:".\Debug/Raven.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE:NO /IMPLIB:".\Debug\Raven.lib" /MACHINE:X86 /SAFESEH .\Debug\Script1.res
          .\Debug/Goal_DodgeGetItem.obj
          .\Debug/main.obj
+         .\Debug/Projectile_Knife.obj
          .\Debug/Raven_Bot.obj
          .\Debug/Raven_Game.obj
          .\Debug/Raven_Map.obj
@@ -71,9 +72,10 @@
          .\Debug/PrecisionTimer.obj
          .\Debug/Vector2d.obj
          .\Debug/WindowUtils.obj
+         .\Debug/Weapon_Knife.obj
          Raven.vcxproj -> C:\Users\Flo\Desktop\AIProjet\Buckland_Chapter7 to 10_Raven\.\Debug\Raven.exe
      1>Génération du projet "C:\Users\Flo\Desktop\AIProjet\Buckland_Chapter7 to 10_Raven\Raven.vcxproj" terminée (Build cible(s)).
 
 La génération a réussi.
 
-Temps écoulé 00:00:02.06
+Temps écoulé 00:00:02.82

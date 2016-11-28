@@ -26,6 +26,8 @@
 #include "goals/Goal_Think.h"
 #include "goals/Raven_Goal_Types.h"
 
+#include "Projectile_Knife.h"
+
 
 
 //uncomment to write object creation/deletion to debug console
@@ -312,6 +314,19 @@ void Raven_Game::AddBolt(Raven_Bot* shooter, Vector2D target)
   
   #ifdef LOG_CREATIONAL_STUFF
   debug_con << "Adding a bolt " << rp->ID() << " at pos " << rp->Pos() << "";
+  #endif
+}
+
+//------------------------------ AddKnife --------------------------------
+
+void Raven_Game::AddKnife(Raven_Bot* shooter, Vector2D target)
+{
+	Raven_Projectile* rp = new Knife_P(shooter, target);
+
+  m_Projectiles.push_back(rp);
+  
+  #ifdef LOG_CREATIONAL_STUFF
+  debug_con << "Adding a Knife " << rp->ID() << " at pos " << rp->Pos() << "";
   #endif
 }
 

@@ -10,6 +10,7 @@
 #include "Raven_UserOptions.h"
 #include "2D/transformations.h"
 #include "fuzzy/FuzzyOperators.h"
+#include "Weapon_Knife.h"
 
 //uncomment to write object creation/deletion to debug console
 #define  LOG_CREATIONAL_STUFF
@@ -60,6 +61,9 @@ void Raven_WeaponSystem::Initialize()
   m_WeaponMap[type_shotgun]         = 0;
   m_WeaponMap[type_rail_gun]        = 0;
   m_WeaponMap[type_rocket_launcher] = 0;
+  m_WeaponMap[type_knife]			= 0;
+
+  AddWeapon(type_knife);
 
   InitializeFuzzyModule();
 }
@@ -132,6 +136,9 @@ void  Raven_WeaponSystem::AddWeapon(unsigned int weapon_type)
   case type_rocket_launcher:
 
     w = new RocketLauncher(m_pOwner); break;
+
+  case type_knife:
+	w = new Knife(m_pOwner); break;
 
   }//end switch
   
@@ -228,6 +235,10 @@ void Raven_WeaponSystem::TakeAimAndShoot()
         GetCurrentWeapon()->ShootAt(AimingPos);
       }
     }
+
+	else if(GetCurrentWeapon()->GetType() == type_knife){
+		GetCurrentWeapon()->ShootAt(AimingPos);
+	}
 
     //no need to predict movement, aim directly at target
     else

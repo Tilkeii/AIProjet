@@ -776,7 +776,7 @@ CONST	SEGMENT
 CONST	ENDS
 CONST	SEGMENT
 _Pi	DQ	0400921f9f01b866er		; 3.14159
-$SG167145 DB	'EX: ', 00H
+$SG167147 DB	'EX: ', 00H
 	ORG $+3
 _colors	DD	0ffH
 	DD	0ff0000H
@@ -13709,7 +13709,7 @@ _pBot$ = 24						; size = 4
 	mov	DWORD PTR __$EHRec$[ebp+8], 0
 	mov	ecx, DWORD PTR tv90[ebp]
 	push	ecx
-	push	OFFSET $SG167145
+	push	OFFSET $SG167147
 	lea	edx, DWORD PTR $T3[ebp]
 	push	edx
 	call	??$?HDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PBD$$QAV10@@Z ; std::operator+<char,std::char_traits<char>,std::allocator<char> >

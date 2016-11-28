@@ -792,11 +792,11 @@ _colors	DD	0ffH
 	DD	0ffff00H
 	DD	0c8c8c8H
 	DD	0e6e6ffH
-$SG163595 DB	'RG: ', 00H
+$SG163598 DB	'RG: ', 00H
 	ORG $+3
-$SG163597 DB	'RL: ', 00H
+$SG163600 DB	'RL: ', 00H
 	ORG $+3
-$SG163599 DB	'SG: ', 00H
+$SG163602 DB	'SG: ', 00H
 CONST	ENDS
 ;	COMDAT ?is_modulo@_Num_int_base@std@@2_NB
 CONST	SEGMENT
@@ -13757,7 +13757,7 @@ $LN3@RenderInfo:
 ; 67   :   case type_rail_gun:
 ; 68   :     s="RG: ";break;
 
-	push	OFFSET $SG163595
+	push	OFFSET $SG163598
 	lea	ecx, DWORD PTR _s$[ebp]
 	call	??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::operator=
 	jmp	SHORT $LN4@RenderInfo
@@ -13766,7 +13766,7 @@ $LN2@RenderInfo:
 ; 69   :   case type_rocket_launcher:
 ; 70   :     s="RL: "; break;
 
-	push	OFFSET $SG163597
+	push	OFFSET $SG163600
 	lea	ecx, DWORD PTR _s$[ebp]
 	call	??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::operator=
 	jmp	SHORT $LN4@RenderInfo
@@ -13775,7 +13775,7 @@ $LN1@RenderInfo:
 ; 71   :   case type_shotgun:
 ; 72   :     s="SG: "; break;
 
-	push	OFFSET $SG163599
+	push	OFFSET $SG163602
 	lea	ecx, DWORD PTR _s$[ebp]
 	call	??4?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@PBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::operator=
 $LN4@RenderInfo:

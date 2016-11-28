@@ -730,7 +730,7 @@ _colors	DD	0ffH
 	DD	0e6e6ffH
 	ORG $+4
 _Pi	DQ	0400921f9f01b866er		; 3.14159
-$SG156517 DB	'Bot_TriggerUpdateFreq', 00H
+$SG156520 DB	'Bot_TriggerUpdateFreq', 00H
 	ORG $+2
 _SmallestDelay DQ 03fd0000000000000r		; 0.25
 CONST	ENDS
@@ -3542,7 +3542,7 @@ _range$ = 12						; size = 8
 	lea	eax, DWORD PTR __$EHRec$[ebp]
 	mov	DWORD PTR fs:0, eax
 	mov	DWORD PTR _this$[ebp], ecx
-	push	OFFSET $SG156517
+	push	OFFSET $SG156520
 	call	?Instance@Raven_Scriptor@@SAPAV1@XZ	; Raven_Scriptor::Instance
 	mov	ecx, eax
 	call	?GetInt@Scriptor@@QAEHPAD@Z		; Scriptor::GetInt

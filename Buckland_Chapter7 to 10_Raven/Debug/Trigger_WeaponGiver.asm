@@ -456,9 +456,9 @@ CONST	SEGMENT
 CONST	ENDS
 CONST	SEGMENT
 _pi	DQ	0400921f9f01b866er		; 3.14159
-$SG158359 DB	'DefaultGiverTriggerRange', 00H
+$SG158361 DB	'DefaultGiverTriggerRange', 00H
 	ORG $+3
-$SG158361 DB	'Weapon_RespawnDelay', 00H
+$SG158363 DB	'Weapon_RespawnDelay', 00H
 _colors	DD	0ffH
 	DD	0ff0000H
 	DD	0ff00H
@@ -22963,7 +22963,7 @@ _in$ = 8						; size = 4
 ; 61   :   //create this trigger's region of fluence
 ; 62   :   AddCircularTriggerRegion(Pos(), script->GetDouble("DefaultGiverTriggerRange"));
 
-	push	OFFSET $SG158359
+	push	OFFSET $SG158361
 	call	?Instance@Raven_Scriptor@@SAPAV1@XZ	; Raven_Scriptor::Instance
 	mov	ecx, eax
 	call	?GetDouble@Scriptor@@QAENPAD@Z		; Scriptor::GetDouble
@@ -22990,7 +22990,7 @@ _in$ = 8						; size = 4
 ; 64   : 
 ; 65   :   SetRespawnDelay((unsigned int)(script->GetDouble("Weapon_RespawnDelay") * FrameRate));
 
-	push	OFFSET $SG158361
+	push	OFFSET $SG158363
 	call	?Instance@Raven_Scriptor@@SAPAV1@XZ	; Raven_Scriptor::Instance
 	mov	ecx, eax
 	call	?GetDouble@Scriptor@@QAENPAD@Z		; Scriptor::GetDouble

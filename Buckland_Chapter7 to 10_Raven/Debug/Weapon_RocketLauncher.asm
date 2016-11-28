@@ -486,55 +486,55 @@ _colors	DD	0ffH
 	DD	0ffff00H
 	DD	0c8c8c8H
 	DD	0e6e6ffH
-$SG167787 DB	'RocketLauncher_IdealRange', 00H
+$SG167790 DB	'RocketLauncher_IdealRange', 00H
 	ORG $+2
 _pi	DQ	0400921f9f01b866er		; 3.14159
 _Pi	DQ	0400921f9f01b866er		; 3.14159
-$SG167786 DB	'Rocket_MaxSpeed', 00H
-$SG167788 DB	'RocketLauncher_FiringFreq', 00H
+$SG167789 DB	'Rocket_MaxSpeed', 00H
+$SG167791 DB	'RocketLauncher_FiringFreq', 00H
 	ORG $+2
-$SG167789 DB	'RocketLauncher_MaxRoundsCarried', 00H
-$SG167790 DB	'RocketLauncher_DefaultRounds', 00H
+$SG167792 DB	'RocketLauncher_MaxRoundsCarried', 00H
+$SG167793 DB	'RocketLauncher_DefaultRounds', 00H
 	ORG $+3
-$SG167824 DB	'DistToTarget', 00H
+$SG167827 DB	'DistToTarget', 00H
 	ORG $+3
-$SG167827 DB	'AmmoStatus', 00H
+$SG167830 DB	'AmmoStatus', 00H
 	ORG $+1
-$SG167829 DB	'Desirability', 00H
+$SG167832 DB	'Desirability', 00H
 	ORG $+3
-$SG167835 DB	'DistToTarget', 00H
+$SG167838 DB	'DistToTarget', 00H
 	ORG $+3
-$SG167840 DB	'Target_Close', 00H
+$SG167843 DB	'Target_Close', 00H
 	ORG $+3
-$SG167845 DB	'Target_Medium', 00H
+$SG167848 DB	'Target_Medium', 00H
 	ORG $+2
-$SG167850 DB	'Target_Far', 00H
+$SG167853 DB	'Target_Far', 00H
 	ORG $+1
-$SG167855 DB	'Target_VeryFar', 00H
+$SG167858 DB	'Target_VeryFar', 00H
 	ORG $+1
-$SG167860 DB	'Target_InUniverse', 00H
+$SG167863 DB	'Target_InUniverse', 00H
 	ORG $+2
-$SG167863 DB	'Desirability', 00H
+$SG167866 DB	'Desirability', 00H
 	ORG $+3
-$SG167868 DB	'IChooseYou', 00H
+$SG167871 DB	'IChooseYou', 00H
 	ORG $+1
-$SG167873 DB	'VeryDesirable', 00H
+$SG167876 DB	'VeryDesirable', 00H
 	ORG $+2
-$SG167878 DB	'Desirable', 00H
+$SG167881 DB	'Desirable', 00H
 	ORG $+2
-$SG167883 DB	'Undesirable', 00H
-$SG167888 DB	'ForgetIt', 00H
+$SG167886 DB	'Undesirable', 00H
+$SG167891 DB	'ForgetIt', 00H
 	ORG $+3
-$SG167891 DB	'AmmoStatus', 00H
+$SG167894 DB	'AmmoStatus', 00H
 	ORG $+1
-$SG167896 DB	'Ammo_Loads', 00H
+$SG167899 DB	'Ammo_Loads', 00H
 	ORG $+1
-$SG167901 DB	'Ammo_AlmostFull', 00H
-$SG167906 DB	'Ammo_Okay', 00H
+$SG167904 DB	'Ammo_AlmostFull', 00H
+$SG167909 DB	'Ammo_Okay', 00H
 	ORG $+2
-$SG167911 DB	'Ammo_Low', 00H
+$SG167914 DB	'Ammo_Low', 00H
 	ORG $+3
-$SG167916 DB	'Ammo_AlmostOut', 00H
+$SG167919 DB	'Ammo_AlmostOut', 00H
 CONST	ENDS
 ;	COMDAT ?cur@?$_Iosb@H@std@@2W4_Seekdir@12@B
 CONST	SEGMENT
@@ -17579,7 +17579,7 @@ $LN2@GetDesirab:
 ; 74   :     //fuzzify distance and amount of ammo
 ; 75   :     m_FuzzyModule.Fuzzify("DistToTarget", DistToTarget);
 
-	push	OFFSET $SG167824
+	push	OFFSET $SG167827
 	lea	ecx, DWORD PTR $T4[ebp]
 	call	??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >
 	mov	DWORD PTR __$EHRec$[ebp+8], 0
@@ -17597,7 +17597,7 @@ $LN2@GetDesirab:
 
 ; 76   :     m_FuzzyModule.Fuzzify("AmmoStatus", (double)m_iNumRoundsLeft);
 
-	push	OFFSET $SG167827
+	push	OFFSET $SG167830
 	lea	ecx, DWORD PTR $T3[ebp]
 	call	??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >
 	mov	DWORD PTR __$EHRec$[ebp+8], 1
@@ -17622,7 +17622,7 @@ $LN2@GetDesirab:
 ; 77   : 
 ; 78   :     m_dLastDesirabilityScore = m_FuzzyModule.DeFuzzify("Desirability", FuzzyModule::max_av);
 
-	push	OFFSET $SG167829
+	push	OFFSET $SG167832
 	lea	ecx, DWORD PTR $T2[ebp]
 	call	??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >
 	mov	DWORD PTR __$EHRec$[ebp+8], 2
@@ -17961,30 +17961,30 @@ _owner$ = 8						; size = 4
 	mov	DWORD PTR _this$[ebp], ecx
 	mov	eax, DWORD PTR _owner$[ebp]
 	push	eax
-	push	OFFSET $SG167786
-	call	?Instance@Raven_Scriptor@@SAPAV1@XZ	; Raven_Scriptor::Instance
-	mov	ecx, eax
-	call	?GetDouble@Scriptor@@QAENPAD@Z		; Scriptor::GetDouble
-	sub	esp, 8
-	fstp	QWORD PTR [esp]
-	push	OFFSET $SG167787
-	call	?Instance@Raven_Scriptor@@SAPAV1@XZ	; Raven_Scriptor::Instance
-	mov	ecx, eax
-	call	?GetDouble@Scriptor@@QAENPAD@Z		; Scriptor::GetDouble
-	sub	esp, 8
-	fstp	QWORD PTR [esp]
-	push	OFFSET $SG167788
-	call	?Instance@Raven_Scriptor@@SAPAV1@XZ	; Raven_Scriptor::Instance
-	mov	ecx, eax
-	call	?GetDouble@Scriptor@@QAENPAD@Z		; Scriptor::GetDouble
-	sub	esp, 8
-	fstp	QWORD PTR [esp]
 	push	OFFSET $SG167789
+	call	?Instance@Raven_Scriptor@@SAPAV1@XZ	; Raven_Scriptor::Instance
+	mov	ecx, eax
+	call	?GetDouble@Scriptor@@QAENPAD@Z		; Scriptor::GetDouble
+	sub	esp, 8
+	fstp	QWORD PTR [esp]
+	push	OFFSET $SG167790
+	call	?Instance@Raven_Scriptor@@SAPAV1@XZ	; Raven_Scriptor::Instance
+	mov	ecx, eax
+	call	?GetDouble@Scriptor@@QAENPAD@Z		; Scriptor::GetDouble
+	sub	esp, 8
+	fstp	QWORD PTR [esp]
+	push	OFFSET $SG167791
+	call	?Instance@Raven_Scriptor@@SAPAV1@XZ	; Raven_Scriptor::Instance
+	mov	ecx, eax
+	call	?GetDouble@Scriptor@@QAENPAD@Z		; Scriptor::GetDouble
+	sub	esp, 8
+	fstp	QWORD PTR [esp]
+	push	OFFSET $SG167792
 	call	?Instance@Raven_Scriptor@@SAPAV1@XZ	; Raven_Scriptor::Instance
 	mov	ecx, eax
 	call	?GetInt@Scriptor@@QAEHPAD@Z		; Scriptor::GetInt
 	push	eax
-	push	OFFSET $SG167790
+	push	OFFSET $SG167793
 	call	?Instance@Raven_Scriptor@@SAPAV1@XZ	; Raven_Scriptor::Instance
 	mov	ecx, eax
 	call	?GetInt@Scriptor@@QAEHPAD@Z		; Scriptor::GetInt
@@ -18375,7 +18375,7 @@ __$EHRec$ = -12						; size = 12
 
 ; 90   :   FuzzyVariable& DistToTarget = m_FuzzyModule.CreateFLV("DistToTarget");
 
-	push	OFFSET $SG167835
+	push	OFFSET $SG167838
 	lea	ecx, DWORD PTR $T44[ebp]
 	call	??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >
 	mov	DWORD PTR __$EHRec$[ebp+8], 0
@@ -18403,7 +18403,7 @@ __$EHRec$ = -12						; size = 12
 	sub	esp, 28					; 0000001cH
 	mov	ecx, esp
 	mov	DWORD PTR $T41[ebp], esp
-	push	OFFSET $SG167840
+	push	OFFSET $SG167843
 	call	??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >
 	mov	DWORD PTR tv1266[ebp], eax
 	lea	ecx, DWORD PTR _$S1$[ebp]
@@ -18429,7 +18429,7 @@ __$EHRec$ = -12						; size = 12
 	sub	esp, 28					; 0000001cH
 	mov	ecx, esp
 	mov	DWORD PTR $T40[ebp], esp
-	push	OFFSET $SG167845
+	push	OFFSET $SG167848
 	call	??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >
 	mov	DWORD PTR tv1272[ebp], eax
 	lea	eax, DWORD PTR _$S2$[ebp]
@@ -18455,7 +18455,7 @@ __$EHRec$ = -12						; size = 12
 	sub	esp, 28					; 0000001cH
 	mov	ecx, esp
 	mov	DWORD PTR $T39[ebp], esp
-	push	OFFSET $SG167850
+	push	OFFSET $SG167853
 	call	??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >
 	mov	DWORD PTR tv1278[ebp], eax
 	lea	edx, DWORD PTR _$S3$[ebp]
@@ -18481,7 +18481,7 @@ __$EHRec$ = -12						; size = 12
 	sub	esp, 28					; 0000001cH
 	mov	ecx, esp
 	mov	DWORD PTR $T38[ebp], esp
-	push	OFFSET $SG167855
+	push	OFFSET $SG167858
 	call	??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >
 	mov	DWORD PTR tv1284[ebp], eax
 	lea	ecx, DWORD PTR _$S4$[ebp]
@@ -18507,7 +18507,7 @@ __$EHRec$ = -12						; size = 12
 	sub	esp, 28					; 0000001cH
 	mov	ecx, esp
 	mov	DWORD PTR $T37[ebp], esp
-	push	OFFSET $SG167860
+	push	OFFSET $SG167863
 	call	??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >
 	mov	DWORD PTR tv1290[ebp], eax
 	lea	eax, DWORD PTR _$S5$[ebp]
@@ -18523,7 +18523,7 @@ __$EHRec$ = -12						; size = 12
 ; 97   : 
 ; 98   :   FuzzyVariable& Desirability = m_FuzzyModule.CreateFLV("Desirability"); 
 
-	push	OFFSET $SG167863
+	push	OFFSET $SG167866
 	lea	ecx, DWORD PTR $T43[ebp]
 	call	??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >
 	mov	BYTE PTR __$EHRec$[ebp+8], 6
@@ -18551,7 +18551,7 @@ __$EHRec$ = -12						; size = 12
 	sub	esp, 28					; 0000001cH
 	mov	ecx, esp
 	mov	DWORD PTR $T36[ebp], esp
-	push	OFFSET $SG167868
+	push	OFFSET $SG167871
 	call	??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >
 	mov	DWORD PTR tv1297[ebp], eax
 	lea	eax, DWORD PTR _$S6$[ebp]
@@ -18577,7 +18577,7 @@ __$EHRec$ = -12						; size = 12
 	sub	esp, 28					; 0000001cH
 	mov	ecx, esp
 	mov	DWORD PTR $T35[ebp], esp
-	push	OFFSET $SG167873
+	push	OFFSET $SG167876
 	call	??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >
 	mov	DWORD PTR tv1303[ebp], eax
 	lea	edx, DWORD PTR _$S7$[ebp]
@@ -18603,7 +18603,7 @@ __$EHRec$ = -12						; size = 12
 	sub	esp, 28					; 0000001cH
 	mov	ecx, esp
 	mov	DWORD PTR $T34[ebp], esp
-	push	OFFSET $SG167878
+	push	OFFSET $SG167881
 	call	??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >
 	mov	DWORD PTR tv1309[ebp], eax
 	lea	ecx, DWORD PTR _$S8$[ebp]
@@ -18629,7 +18629,7 @@ __$EHRec$ = -12						; size = 12
 	sub	esp, 28					; 0000001cH
 	mov	ecx, esp
 	mov	DWORD PTR $T33[ebp], esp
-	push	OFFSET $SG167883
+	push	OFFSET $SG167886
 	call	??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >
 	mov	DWORD PTR tv1315[ebp], eax
 	lea	eax, DWORD PTR _$S9$[ebp]
@@ -18655,7 +18655,7 @@ __$EHRec$ = -12						; size = 12
 	sub	esp, 28					; 0000001cH
 	mov	ecx, esp
 	mov	DWORD PTR $T32[ebp], esp
-	push	OFFSET $SG167888
+	push	OFFSET $SG167891
 	call	??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >
 	mov	DWORD PTR tv1321[ebp], eax
 	lea	edx, DWORD PTR _$S10$[ebp]
@@ -18671,7 +18671,7 @@ __$EHRec$ = -12						; size = 12
 ; 105  : 
 ; 106  :   FuzzyVariable& AmmoStatus = m_FuzzyModule.CreateFLV("AmmoStatus");
 
-	push	OFFSET $SG167891
+	push	OFFSET $SG167894
 	lea	ecx, DWORD PTR $T42[ebp]
 	call	??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >
 	mov	BYTE PTR __$EHRec$[ebp+8], 12		; 0000000cH
@@ -18699,7 +18699,7 @@ __$EHRec$ = -12						; size = 12
 	sub	esp, 28					; 0000001cH
 	mov	ecx, esp
 	mov	DWORD PTR $T31[ebp], esp
-	push	OFFSET $SG167896
+	push	OFFSET $SG167899
 	call	??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >
 	mov	DWORD PTR tv1328[ebp], eax
 	lea	edx, DWORD PTR _$S11$[ebp]
@@ -18725,7 +18725,7 @@ __$EHRec$ = -12						; size = 12
 	sub	esp, 28					; 0000001cH
 	mov	ecx, esp
 	mov	DWORD PTR $T30[ebp], esp
-	push	OFFSET $SG167901
+	push	OFFSET $SG167904
 	call	??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >
 	mov	DWORD PTR tv1334[ebp], eax
 	lea	ecx, DWORD PTR _$S12$[ebp]
@@ -18751,7 +18751,7 @@ __$EHRec$ = -12						; size = 12
 	sub	esp, 28					; 0000001cH
 	mov	ecx, esp
 	mov	DWORD PTR $T29[ebp], esp
-	push	OFFSET $SG167906
+	push	OFFSET $SG167909
 	call	??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >
 	mov	DWORD PTR tv1340[ebp], eax
 	lea	eax, DWORD PTR _$S13$[ebp]
@@ -18777,7 +18777,7 @@ __$EHRec$ = -12						; size = 12
 	sub	esp, 28					; 0000001cH
 	mov	ecx, esp
 	mov	DWORD PTR $T28[ebp], esp
-	push	OFFSET $SG167911
+	push	OFFSET $SG167914
 	call	??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >
 	mov	DWORD PTR tv1346[ebp], eax
 	lea	edx, DWORD PTR _$S14$[ebp]
@@ -18803,7 +18803,7 @@ __$EHRec$ = -12						; size = 12
 	sub	esp, 28					; 0000001cH
 	mov	ecx, esp
 	mov	DWORD PTR $T27[ebp], esp
-	push	OFFSET $SG167916
+	push	OFFSET $SG167919
 	call	??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z ; std::basic_string<char,std::char_traits<char>,std::allocator<char> >::basic_string<char,std::char_traits<char>,std::allocator<char> >
 	mov	DWORD PTR tv1352[ebp], eax
 	lea	ecx, DWORD PTR _$S15$[ebp]
