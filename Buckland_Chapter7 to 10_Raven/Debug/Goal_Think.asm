@@ -938,7 +938,11 @@ PUBLIC	?TextAtPos@Cgdi@@QAEXNNABV?$basic_string@DU?$char_traits@D@std@@V?$alloca
 PUBLIC	?TransparentText@Cgdi@@QAEXXZ			; Cgdi::TransparentText
 PUBLIC	?TextColor@Cgdi@@QAEXH@Z			; Cgdi::TextColor
 PUBLIC	?TextColor@Cgdi@@QAEXHHH@Z			; Cgdi::TextColor
+PUBLIC	?GetTarget@Raven_TargetingSystem@@QBEPAVRaven_Bot@@XZ ; Raven_TargetingSystem::GetTarget
 PUBLIC	?isPossessed@Raven_Bot@@QBE_NXZ			; Raven_Bot::isPossessed
+PUBLIC	?GetTargetSys@Raven_Bot@@QAEQAVRaven_TargetingSystem@@XZ ; Raven_Bot::GetTargetSys
+PUBLIC	?GetTargetBot@Raven_Bot@@QBEQAV1@XZ		; Raven_Bot::GetTargetBot
+PUBLIC	?GetEquipe@Raven_Bot@@QAEHXZ			; Raven_Bot::GetEquipe
 PUBLIC	??0Goal_Evaluator@@QAE@N@Z			; Goal_Evaluator::Goal_Evaluator
 PUBLIC	??1Goal_Evaluator@@UAE@XZ			; Goal_Evaluator::~Goal_Evaluator
 PUBLIC	??_GGoal_Evaluator@@UAEPAXI@Z			; Goal_Evaluator::`scalar deleting destructor'
@@ -10219,7 +10223,7 @@ __$EHRec$ = -12						; size = 12
 ?Render@Goal_Think@@UAEXXZ PROC				; Goal_Think::Render
 ; _this$ = ecx
 
-; 194  : {
+; 199  : {
 
 	push	ebp
 	mov	ebp, esp
@@ -10243,13 +10247,13 @@ __$EHRec$ = -12						; size = 12
 	mov	DWORD PTR fs:0, eax
 	mov	DWORD PTR _this$[ebp], ecx
 
-; 195  :   std::list<Goal<Raven_Bot>*>::iterator curG;
+; 200  :   std::list<Goal<Raven_Bot>*>::iterator curG;
 
 	lea	ecx, DWORD PTR _curG$[ebp]
 	call	??0?$_List_iterator@V?$_List_val@U?$_List_simple_types@PAV?$Goal@VRaven_Bot@@@@@std@@@std@@@std@@QAE@XZ ; std::_List_iterator<std::_List_val<std::_List_simple_types<Goal<Raven_Bot> *> > >::_List_iterator<std::_List_val<std::_List_simple_types<Goal<Raven_Bot> *> > >
 	mov	DWORD PTR __$EHRec$[ebp+8], 0
 
-; 196  :   for (curG=m_SubGoals.begin(); curG != m_SubGoals.end(); ++curG)
+; 201  :   for (curG=m_SubGoals.begin(); curG != m_SubGoals.end(); ++curG)
 
 	lea	eax, DWORD PTR $T4[ebp]
 	push	eax
@@ -10293,8 +10297,8 @@ $LN3@Render:
 	test	eax, eax
 	je	SHORT $LN1@Render
 
-; 197  :   {
-; 198  :     (*curG)->Render();
+; 202  :   {
+; 203  :     (*curG)->Render();
 
 	lea	ecx, DWORD PTR _curG$[ebp]
 	call	??D?$_List_iterator@V?$_List_val@U?$_List_simple_types@PAV?$Goal@VRaven_Bot@@@@@std@@@std@@@std@@QBEAAPAV?$Goal@VRaven_Bot@@@@XZ ; std::_List_iterator<std::_List_val<std::_List_simple_types<Goal<Raven_Bot> *> > >::operator*
@@ -10309,12 +10313,12 @@ $LN3@Render:
 	cmp	esi, esp
 	call	__RTC_CheckEsp
 
-; 199  :   }
+; 204  :   }
 
 	jmp	SHORT $LN2@Render
 $LN1@Render:
 
-; 200  : }
+; 205  : }
 
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
 	lea	ecx, DWORD PTR _curG$[ebp]
@@ -10389,7 +10393,7 @@ _top$ = 12						; size = 4
 ?RenderEvaluations@Goal_Think@@QBEXHH@Z PROC		; Goal_Think::RenderEvaluations
 ; _this$ = ecx
 
-; 181  : {
+; 186  : {
 
 	push	ebp
 	mov	ebp, esp
@@ -10413,15 +10417,15 @@ _top$ = 12						; size = 4
 	mov	DWORD PTR fs:0, eax
 	mov	DWORD PTR _this$[ebp], ecx
 
-; 182  :   gdi->TextColor(Cgdi::black);
+; 187  :   gdi->TextColor(Cgdi::black);
 
 	push	3
 	call	?Instance@Cgdi@@SAPAV1@XZ		; Cgdi::Instance
 	mov	ecx, eax
 	call	?TextColor@Cgdi@@QAEXH@Z		; Cgdi::TextColor
 
-; 183  :   
-; 184  :   std::vector<Goal_Evaluator*>::const_iterator curDes = m_Evaluators.begin();
+; 188  :   
+; 189  :   std::vector<Goal_Evaluator*>::const_iterator curDes = m_Evaluators.begin();
 
 	lea	eax, DWORD PTR _curDes$[ebp]
 	push	eax
@@ -10432,7 +10436,7 @@ _top$ = 12						; size = 4
 	jmp	SHORT $LN3@RenderEval
 $LN2@RenderEval:
 
-; 185  :   for (curDes; curDes != m_Evaluators.end(); ++curDes)
+; 190  :   for (curDes; curDes != m_Evaluators.end(); ++curDes)
 
 	lea	ecx, DWORD PTR _curDes$[ebp]
 	call	??E?$_Vector_const_iterator@V?$_Vector_val@U?$_Simple_types@PAVGoal_Evaluator@@@std@@@std@@@std@@QAEAAV01@XZ ; std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<Goal_Evaluator *> > >::operator++
@@ -10458,8 +10462,8 @@ $LN3@RenderEval:
 	test	ecx, ecx
 	je	SHORT $LN1@RenderEval
 
-; 186  :   {
-; 187  :     (*curDes)->RenderInfo(Vector2D(left, top), m_pOwner);
+; 191  :   {
+; 192  :     (*curDes)->RenderInfo(Vector2D(left, top), m_pOwner);
 
 	lea	ecx, DWORD PTR _curDes$[ebp]
 	call	??D?$_Vector_const_iterator@V?$_Vector_val@U?$_Simple_types@PAVGoal_Evaluator@@@std@@@std@@@std@@QBEABQAVGoal_Evaluator@@XZ ; std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<Goal_Evaluator *> > >::operator*
@@ -10495,19 +10499,19 @@ $LN3@RenderEval:
 	cmp	esi, esp
 	call	__RTC_CheckEsp
 
-; 188  : 
-; 189  :     left += 75;
+; 193  : 
+; 194  :     left += 75;
 
 	mov	ecx, DWORD PTR _left$[ebp]
 	add	ecx, 75					; 0000004bH
 	mov	DWORD PTR _left$[ebp], ecx
 
-; 190  :   }
+; 195  :   }
 
 	jmp	$LN2@RenderEval
 $LN1@RenderEval:
 
-; 191  : }
+; 196  : }
 
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
 	lea	ecx, DWORD PTR _curDes$[ebp]
@@ -10577,7 +10581,7 @@ _pos$ = 8						; size = 16
 ?QueueGoal_MoveToPosition@Goal_Think@@QAEXUVector2D@@@Z PROC ; Goal_Think::QueueGoal_MoveToPosition
 ; _this$ = ecx
 
-; 172  : {
+; 177  : {
 
 	push	ebp
 	mov	ebp, esp
@@ -10599,7 +10603,7 @@ _pos$ = 8						; size = 16
 	mov	DWORD PTR fs:0, eax
 	mov	DWORD PTR _this$[ebp], ecx
 
-; 173  :    m_SubGoals.push_back(new Goal_MoveToPosition(m_pOwner, pos));
+; 178  :    m_SubGoals.push_back(new Goal_MoveToPosition(m_pOwner, pos));
 
 	push	48					; 00000030H
 	call	??2@YAPAXI@Z				; operator new
@@ -10639,7 +10643,7 @@ $LN4@QueueGoal_:
 	add	ecx, 16					; 00000010H
 	call	?push_back@?$list@PAV?$Goal@VRaven_Bot@@@@V?$allocator@PAV?$Goal@VRaven_Bot@@@@@std@@@std@@QAEX$$QAPAV?$Goal@VRaven_Bot@@@@@Z ; std::list<Goal<Raven_Bot> *,std::allocator<Goal<Raven_Bot> *> >::push_back
 
-; 174  : }
+; 179  : }
 
 	mov	ecx, DWORD PTR __$EHRec$[ebp]
 	mov	DWORD PTR fs:0, ecx
@@ -10671,7 +10675,7 @@ text$x	ENDS
 ; Function compile flags: /Odtp /RTCsu
 ; File c:\users\flo\desktop\aiprojet\buckland_chapter7 to 10_raven\goals\goal_think.cpp
 _TEXT	SEGMENT
-tv129 = -28						; size = 4
+tv156 = -28						; size = 4
 $T2 = -24						; size = 4
 $T3 = -20						; size = 4
 _this$ = -16						; size = 4
@@ -10708,15 +10712,36 @@ __$EHRec$ = -12						; size = 12
 	call	?notPresent@Goal_Think@@QBE_NI@Z	; Goal_Think::notPresent
 	movzx	eax, al
 	test	eax, eax
-	je	SHORT $LN2@AddGoal_At
+	je	$LN4@AddGoal_At
 
 ; 163  :   {
-; 164  :     RemoveAllSubgoals();
+; 164  : 	if(m_pOwner->GetTargetSys()->GetTarget() && m_pOwner->GetEquipe() != m_pOwner->GetTargetBot()->GetEquipe()){
+
+	mov	ecx, DWORD PTR _this$[ebp]
+	mov	ecx, DWORD PTR [ecx+8]
+	call	?GetTargetSys@Raven_Bot@@QAEQAVRaven_TargetingSystem@@XZ ; Raven_Bot::GetTargetSys
+	mov	ecx, eax
+	call	?GetTarget@Raven_TargetingSystem@@QBEPAVRaven_Bot@@XZ ; Raven_TargetingSystem::GetTarget
+	test	eax, eax
+	je	$LN2@AddGoal_At
+	mov	edx, DWORD PTR _this$[ebp]
+	mov	ecx, DWORD PTR [edx+8]
+	call	?GetEquipe@Raven_Bot@@QAEHXZ		; Raven_Bot::GetEquipe
+	mov	esi, eax
+	mov	eax, DWORD PTR _this$[ebp]
+	mov	ecx, DWORD PTR [eax+8]
+	call	?GetTargetBot@Raven_Bot@@QBEQAV1@XZ	; Raven_Bot::GetTargetBot
+	mov	ecx, eax
+	call	?GetEquipe@Raven_Bot@@QAEHXZ		; Raven_Bot::GetEquipe
+	cmp	esi, eax
+	je	SHORT $LN2@AddGoal_At
+
+; 165  : 		RemoveAllSubgoals();
 
 	mov	ecx, DWORD PTR _this$[ebp]
 	call	?RemoveAllSubgoals@?$Goal_Composite@VRaven_Bot@@@@QAEXXZ ; Goal_Composite<Raven_Bot>::RemoveAllSubgoals
 
-; 165  :     AddSubgoal( new Goal_AttackTarget(m_pOwner));
+; 166  : 		AddSubgoal( new Goal_AttackTarget(m_pOwner));
 
 	push	28					; 0000001cH
 	call	??2@YAPAXI@Z				; operator new
@@ -10724,18 +10749,18 @@ __$EHRec$ = -12						; size = 12
 	mov	DWORD PTR $T2[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+8], 0
 	cmp	DWORD PTR $T2[ebp], 0
-	je	SHORT $LN4@AddGoal_At
+	je	SHORT $LN6@AddGoal_At
 	mov	ecx, DWORD PTR _this$[ebp]
 	mov	edx, DWORD PTR [ecx+8]
 	push	edx
 	mov	ecx, DWORD PTR $T2[ebp]
 	call	??0Goal_AttackTarget@@QAE@PAVRaven_Bot@@@Z ; Goal_AttackTarget::Goal_AttackTarget
-	mov	DWORD PTR tv129[ebp], eax
-	jmp	SHORT $LN5@AddGoal_At
-$LN4@AddGoal_At:
-	mov	DWORD PTR tv129[ebp], 0
-$LN5@AddGoal_At:
-	mov	eax, DWORD PTR tv129[ebp]
+	mov	DWORD PTR tv156[ebp], eax
+	jmp	SHORT $LN7@AddGoal_At
+$LN6@AddGoal_At:
+	mov	DWORD PTR tv156[ebp], 0
+$LN7@AddGoal_At:
+	mov	eax, DWORD PTR tv156[ebp]
 	mov	DWORD PTR $T3[ebp], eax
 	mov	DWORD PTR __$EHRec$[ebp+8], -1
 	mov	esi, esp
@@ -10748,10 +10773,22 @@ $LN5@AddGoal_At:
 	call	edx
 	cmp	esi, esp
 	call	__RTC_CheckEsp
+
+; 167  : 	}
+; 168  : 	else{
+
+	jmp	SHORT $LN4@AddGoal_At
 $LN2@AddGoal_At:
 
-; 166  :   }
-; 167  : }
+; 169  : 		AddGoal_Explore();
+
+	mov	ecx, DWORD PTR _this$[ebp]
+	call	?AddGoal_Explore@Goal_Think@@QAEXXZ	; Goal_Think::AddGoal_Explore
+$LN4@AddGoal_At:
+
+; 170  : 	}
+; 171  :   }
+; 172  : }
 
 	mov	ecx, DWORD PTR __$EHRec$[ebp]
 	mov	DWORD PTR fs:0, ecx
@@ -18388,6 +18425,76 @@ _CharacterBias$ = 8					; size = 8
 _TEXT	ENDS
 ; Function compile flags: /Odtp /RTCsu
 ; File c:\users\flo\desktop\aiprojet\buckland_chapter7 to 10_raven\raven_bot.h
+;	COMDAT ?GetEquipe@Raven_Bot@@QAEHXZ
+_TEXT	SEGMENT
+_this$ = -4						; size = 4
+?GetEquipe@Raven_Bot@@QAEHXZ PROC			; Raven_Bot::GetEquipe, COMDAT
+; _this$ = ecx
+
+; 217  :   int GetEquipe(){return m_Equipe;}
+
+	push	ebp
+	mov	ebp, esp
+	push	ecx
+	mov	DWORD PTR [ebp-4], -858993460		; ccccccccH
+	mov	DWORD PTR _this$[ebp], ecx
+	mov	eax, DWORD PTR _this$[ebp]
+	mov	eax, DWORD PTR [eax+272]
+	mov	esp, ebp
+	pop	ebp
+	ret	0
+?GetEquipe@Raven_Bot@@QAEHXZ ENDP			; Raven_Bot::GetEquipe
+_TEXT	ENDS
+; Function compile flags: /Odtp /RTCsu
+; File c:\users\flo\desktop\aiprojet\buckland_chapter7 to 10_raven\raven_bot.h
+;	COMDAT ?GetTargetBot@Raven_Bot@@QBEQAV1@XZ
+_TEXT	SEGMENT
+_this$ = -4						; size = 4
+?GetTargetBot@Raven_Bot@@QBEQAV1@XZ PROC		; Raven_Bot::GetTargetBot, COMDAT
+; _this$ = ecx
+
+; 213  :   Raven_Bot* const                   GetTargetBot()const{return m_pTargSys->GetTarget();}
+
+	push	ebp
+	mov	ebp, esp
+	push	ecx
+	mov	DWORD PTR [ebp-4], -858993460		; ccccccccH
+	mov	DWORD PTR _this$[ebp], ecx
+	mov	eax, DWORD PTR _this$[ebp]
+	mov	ecx, DWORD PTR [eax+168]
+	call	?GetTarget@Raven_TargetingSystem@@QBEPAVRaven_Bot@@XZ ; Raven_TargetingSystem::GetTarget
+	add	esp, 4
+	cmp	ebp, esp
+	call	__RTC_CheckEsp
+	mov	esp, ebp
+	pop	ebp
+	ret	0
+?GetTargetBot@Raven_Bot@@QBEQAV1@XZ ENDP		; Raven_Bot::GetTargetBot
+_TEXT	ENDS
+; Function compile flags: /Odtp /RTCsu
+; File c:\users\flo\desktop\aiprojet\buckland_chapter7 to 10_raven\raven_bot.h
+;	COMDAT ?GetTargetSys@Raven_Bot@@QAEQAVRaven_TargetingSystem@@XZ
+_TEXT	SEGMENT
+_this$ = -4						; size = 4
+?GetTargetSys@Raven_Bot@@QAEQAVRaven_TargetingSystem@@XZ PROC ; Raven_Bot::GetTargetSys, COMDAT
+; _this$ = ecx
+
+; 212  :   Raven_TargetingSystem* const       GetTargetSys(){return m_pTargSys;}
+
+	push	ebp
+	mov	ebp, esp
+	push	ecx
+	mov	DWORD PTR [ebp-4], -858993460		; ccccccccH
+	mov	DWORD PTR _this$[ebp], ecx
+	mov	eax, DWORD PTR _this$[ebp]
+	mov	eax, DWORD PTR [eax+168]
+	mov	esp, ebp
+	pop	ebp
+	ret	0
+?GetTargetSys@Raven_Bot@@QAEQAVRaven_TargetingSystem@@XZ ENDP ; Raven_Bot::GetTargetSys
+_TEXT	ENDS
+; Function compile flags: /Odtp /RTCsu
+; File c:\users\flo\desktop\aiprojet\buckland_chapter7 to 10_raven\raven_bot.h
 ;	COMDAT ?isPossessed@Raven_Bot@@QBE_NXZ
 _TEXT	SEGMENT
 _this$ = -4						; size = 4
@@ -18407,6 +18514,28 @@ _this$ = -4						; size = 4
 	pop	ebp
 	ret	0
 ?isPossessed@Raven_Bot@@QBE_NXZ ENDP			; Raven_Bot::isPossessed
+_TEXT	ENDS
+; Function compile flags: /Odtp /RTCsu
+; File c:\users\flo\desktop\aiprojet\buckland_chapter7 to 10_raven\raven_targetingsystem.h
+;	COMDAT ?GetTarget@Raven_TargetingSystem@@QBEPAVRaven_Bot@@XZ
+_TEXT	SEGMENT
+_this$ = -4						; size = 4
+?GetTarget@Raven_TargetingSystem@@QBEPAVRaven_Bot@@XZ PROC ; Raven_TargetingSystem::GetTarget, COMDAT
+; _this$ = ecx
+
+; 65   :   Raven_Bot* GetTarget()const{return m_pCurrentTarget;}
+
+	push	ebp
+	mov	ebp, esp
+	push	ecx
+	mov	DWORD PTR [ebp-4], -858993460		; ccccccccH
+	mov	DWORD PTR _this$[ebp], ecx
+	mov	eax, DWORD PTR _this$[ebp]
+	mov	eax, DWORD PTR [eax+4]
+	mov	esp, ebp
+	pop	ebp
+	ret	0
+?GetTarget@Raven_TargetingSystem@@QBEPAVRaven_Bot@@XZ ENDP ; Raven_TargetingSystem::GetTarget
 _TEXT	ENDS
 ; Function compile flags: /Odtp /RTCsu
 ; File c:\users\flo\desktop\aiprojet\common\misc\cgdi.h

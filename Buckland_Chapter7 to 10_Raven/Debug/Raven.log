@@ -1,11 +1,9 @@
-﻿La génération a démarré 2016-11-28 14:05:57.
+﻿La génération a démarré 2016-11-28 15:41:38.
      1>Projet "C:\Users\Flo\Desktop\AIProjet\Buckland_Chapter7 to 10_Raven\Raven.vcxproj" sur le nœud 2 (Build cible(s)).
      1>ClCompile:
-         D:\Logiciel\Visual Studio 2012\VC\bin\CL.exe /c /I../common /Zi /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _VC80_UPGRADE=0x0600 /D _MBCS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /FAs /Fa".\Debug/" /Fo".\Debug/" /Fd".\Debug/vc110.pdb" /FR".\Debug\\" /Gd /TP /analyze- /errorReport:prompt /Zm200  Raven_TargetingSystem.cpp Raven_WeaponSystem.cpp
-         Raven_WeaponSystem.cpp
-     1>c:\users\flo\desktop\aiprojet\buckland_chapter7 to 10_raven\Raven_WeaponSystem.h(16): warning C4067: jetons inattendus après la directive du préprocesseur - saut de ligne attendu
-     1>Raven_WeaponSystem.cpp(325): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
-         Raven_TargetingSystem.cpp
+         D:\Logiciel\Visual Studio 2012\VC\bin\CL.exe /c /I../common /Zi /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _VC80_UPGRADE=0x0600 /D _MBCS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /FAs /Fa".\Debug/" /Fo".\Debug/" /Fd".\Debug/vc110.pdb" /FR".\Debug\\" /Gd /TP /analyze- /errorReport:prompt /Zm200  goals\Goal_AttackTarget.cpp goals\Goal_Think.cpp
+         Goal_Think.cpp
+         Goal_AttackTarget.cpp
          Génération de code en cours...
        Link:
          D:\Logiciel\Visual Studio 2012\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:".\Debug/Raven.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /NODEFAULTLIB:libcmt /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:".\Debug/Raven.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE:NO /IMPLIB:".\Debug\Raven.lib" /MACHINE:X86 /SAFESEH .\Debug\Script1.res
@@ -74,10 +72,8 @@
          .\Debug/Vector2d.obj
          .\Debug/WindowUtils.obj
          Raven.vcxproj -> C:\Users\Flo\Desktop\AIProjet\Buckland_Chapter7 to 10_Raven\.\Debug\Raven.exe
-       BscMake:
-         D:\Logiciel\Visual Studio 2012\VC\bin\bscmake.exe /nologo /o".\Debug/Raven.bsc" .\Debug\Goal_DodgeGetItem.sbr .\Debug\main.sbr .\Debug\Raven_Bot.sbr .\Debug\Raven_Game.sbr .\Debug\Raven_Map.sbr .\Debug\Raven_Weapon.sbr .\Debug\Weapon_Blaster.sbr .\Debug\Weapon_RailGun.sbr .\Debug\Weapon_RocketLauncher.sbr .\Debug\Weapon_ShotGun.sbr .\Debug\Projectile_Bolt.sbr .\Debug\Projectile_Pellet.sbr .\Debug\Projectile_Rocket.sbr .\Debug\Projectile_Slug.sbr .\Debug\Raven_Projectile.sbr .\Debug\BaseGameEntity.sbr .\Debug\Raven_Scriptor.sbr .\Debug\EntityManager.sbr .\Debug\GraveMarkers.sbr .\Debug\Raven_Door.sbr .\Debug\Raven_UserOptions.sbr .\Debug\Raven_Goal_Types.sbr .\Debug\Goal_AdjustRange.sbr .\Debug\Goal_AttackTarget.sbr .\Debug\Goal_Explore.sbr .\Debug\Goal_FollowPath.sbr .\Debug\Goal_GetItem.sbr .\Debug\Goal_HuntTarget.sbr .\Debug\Goal_MoveToPosition.sbr .\Debug\Goal_NegotiateDoor.sbr .\Debug\Goal_Think.sbr .\Debug\AttackTargetGoal_Evaluator.sbr .\Debug\ExploreGoal_Evaluator.sbr .\Debug\GetHealthGoal_Evaluator.sbr .\Debug\GetWeaponGoal_Evaluator.sbr .\Debug\Raven_Feature.sbr .\Debug\Goal_DodgeSideToSide.sbr .\Debug\Goal_SayPhrase.sbr .\Debug\Goal_SeekToPosition.sbr .\Debug\Goal_TraverseEdge.sbr .\Debug\Goal_Wander.sbr .\Debug\FuzzyModule.sbr .\Debug\FuzzyOperators.sbr .\Debug\FuzzyVariable.sbr .\Debug\FuzzySet_LeftShoulder.sbr .\Debug\FuzzySet_RightShoulder.sbr .\Debug\FuzzySet_Singleton.sbr .\Debug\FuzzySet_Triangle.sbr .\Debug\Raven_PathPlanner.sbr .\Debug\Raven_SteeringBehaviors.sbr .\Debug\MessageDispatcher.sbr .\Debug\Raven_SensoryMemory.sbr .\Debug\Trigger_HealthGiver.sbr .\Debug\Trigger_SoundNotify.sbr .\Debug\Trigger_WeaponGiver.sbr .\Debug\Raven_WeaponSystem.sbr .\Debug\Raven_TargetingSystem.sbr .\Debug\Cgdi.sbr .\Debug\CrudeTimer.sbr .\Debug\DebugConsole.sbr .\Debug\FrameCounter.sbr .\Debug\PrecisionTimer.sbr .\Debug\Vector2d.sbr .\Debug\WindowUtils.sbr
      1>Génération du projet "C:\Users\Flo\Desktop\AIProjet\Buckland_Chapter7 to 10_Raven\Raven.vcxproj" terminée (Build cible(s)).
 
 La génération a réussi.
 
-Temps écoulé 00:00:03.90
+Temps écoulé 00:00:02.06

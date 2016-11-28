@@ -6973,7 +6973,7 @@ $LN2@Activate:
 $LN5@Activate:
 
 ; 51   :   {
-; 52   :     AddSubgoal(new Goal_HuntTarget(m_pOwner));
+; 52   : 	AddSubgoal(new Goal_HuntTarget(m_pOwner));
 
 	push	32					; 00000020H
 	call	??2@YAPAXI@Z				; operator new

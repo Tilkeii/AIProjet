@@ -161,8 +161,13 @@ void Goal_Think::AddGoal_AttackTarget()
 {
   if (notPresent(goal_attack_target))
   {
-    RemoveAllSubgoals();
-    AddSubgoal( new Goal_AttackTarget(m_pOwner));
+	if(m_pOwner->GetTargetSys()->GetTarget() && m_pOwner->GetEquipe() != m_pOwner->GetTargetBot()->GetEquipe()){
+		RemoveAllSubgoals();
+		AddSubgoal( new Goal_AttackTarget(m_pOwner));
+	}
+	else{
+		AddGoal_Explore();
+	}
   }
 }
 

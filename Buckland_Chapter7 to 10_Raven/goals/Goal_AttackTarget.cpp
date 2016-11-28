@@ -49,7 +49,7 @@ void Goal_AttackTarget::Activate()
   //if the target is not visible, go hunt it.
   else
   {
-    AddSubgoal(new Goal_HuntTarget(m_pOwner));
+	AddSubgoal(new Goal_HuntTarget(m_pOwner));
   }
 }
 
