@@ -29,7 +29,8 @@
 
 
 //uncomment to write object creation/deletion to debug console
-//#define  LOG_CREATIONAL_STUFF
+#define  LOG_CREATIONAL_STUFF
+#include "debug/DebugConsole.h"
 
 
 //----------------------------- ctor ------------------------------------------
@@ -251,6 +252,10 @@ void Raven_Game::AddBots(unsigned int NumBotsToAdd)
     //create a bot. (its position is irrelevant at this point because it will
     //not be rendered until it is spawned)
     Raven_Bot* rb = new Raven_Bot(this, Vector2D());
+	rb->SetEquipe(2);
+#ifdef LOG_CREATIONAL_STUFF
+    debug_con << "Equipe bot " << rb->GetEquipe() << "";
+#endif
 
     //switch the default steering behaviors on
     rb->GetSteering()->WallAvoidanceOn();

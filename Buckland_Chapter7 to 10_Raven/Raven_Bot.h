@@ -122,6 +122,8 @@ private:
   //initializes the bot's VB with its geometry
   void          SetUpVertexBuffer();
 
+  int m_Equipe;
+
 
 public:
   
@@ -198,6 +200,8 @@ public:
   bool          canStepRight(Vector2D& PositionOfStep)const;
   bool          canStepForward(Vector2D& PositionOfStep)const;
   bool          canStepBackward(Vector2D& PositionOfStep)const;
+  bool          canStepDiagonalGauche(Vector2D& PositionOfStep)const;
+  bool          canStepDiagonaleDroite(Vector2D& PositionOfStep)const;
 
   
   Raven_Game* const                  GetWorld(){return m_pWorld;} 
@@ -210,6 +214,8 @@ public:
   Raven_WeaponSystem* const          GetWeaponSys()const{return m_pWeaponSys;}
   Raven_SensoryMemory* const         GetSensoryMem()const{return m_pSensoryMem;}
 
+  int GetEquipe(){return m_Equipe;}
+  void SetEquipe(int equipe){m_Equipe = equipe;}
 
 };
 

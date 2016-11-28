@@ -22,13 +22,13 @@ void Goal_DodgeGetItem::Activate()
   
     if (m_bClockwise)
     {
-      if (m_pOwner->canStepRight(m_vStrafeTarget))
+	  if (m_pOwner->canStepDiagonaleDroite(m_vStrafeTarget))
       {
 		  // Faire fonction diagonale droite et gauche
 		  m_pOwner->GetSteering()->SetTarget(m_vStrafeTarget);
-		  if(m_pOwner->canStepBackward(m_vStrafeTarget)){
+		  /*if(m_pOwner->canStepBackward(m_vStrafeTarget)){
 			m_pOwner->GetSteering()->SetTarget(m_vStrafeTarget);
-		  }
+		  }*/
       }
       else
       {
@@ -40,12 +40,12 @@ void Goal_DodgeGetItem::Activate()
 
     else
     {
-      if (m_pOwner->canStepLeft(m_vStrafeTarget))
+	  if (m_pOwner->canStepDiagonalGauche(m_vStrafeTarget))
       {
-		  m_pOwner->GetSteering()->SetTarget(m_vStrafeTarget);
-		if(m_pOwner->canStepBackward(m_vStrafeTarget)){
+		m_pOwner->GetSteering()->SetTarget(m_vStrafeTarget);
+		/*if(m_pOwner->canStepBackward(m_vStrafeTarget)){
 			m_pOwner->GetSteering()->SetTarget(m_vStrafeTarget);
-		}
+		}*/
       }
       else
       {

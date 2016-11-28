@@ -46,7 +46,8 @@ Raven_Bot::Raven_Bot(Raven_Game* world,Vector2D pos):
                  m_iScore(0),
                  m_Status(spawning),
                  m_bPossessed(false),
-                 m_dFieldOfView(DegsToRads(script->GetDouble("Bot_FOV")))
+                 m_dFieldOfView(DegsToRads(script->GetDouble("Bot_FOV"))),
+				 m_Equipe(1)
            
 {
   SetEntityType(type_bot);
@@ -468,6 +469,24 @@ bool Raven_Bot::canStepBackward(Vector2D& PositionOfStep)const
   static const double StepDistance = BRadius() * 2;
 
   PositionOfStep = Pos() - Facing() * StepDistance - Facing() * BRadius();
+
+  return canWalkTo(PositionOfStep);
+}
+
+bool Raven_Bot::canStepDiagonaleDroite(Vector2D& PositionOfStep)const
+{
+  static const double StepDistance = BRadius() * 2;
+
+  PositionOfStep = Pos() - Facing() +  Facing().Perp() * StepDistance - Facing() + Facing().Perp() * BRadius();
+
+  return canWalkTo(PositionOfStep);
+}
+
+bool Raven_Bot::canStepDiagonalGauche(Vector2D& PositionOfStep)const
+{
+  static const double StepDistance = BRadius() * 2;
+  
+  PositionOfStep = Pos() - Facing() -  Facing().Perp() * StepDistance - Facing() - Facing().Perp() * BRadius();
 
   return canWalkTo(PositionOfStep);
 }

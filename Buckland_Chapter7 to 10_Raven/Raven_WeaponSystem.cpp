@@ -11,6 +11,9 @@
 #include "2D/transformations.h"
 #include "fuzzy/FuzzyOperators.h"
 
+//uncomment to write object creation/deletion to debug console
+#define  LOG_CREATIONAL_STUFF
+#include "debug/DebugConsole.h"
 
 //------------------------- ctor ----------------------------------------------
 //-----------------------------------------------------------------------------
@@ -182,10 +185,16 @@ void Raven_WeaponSystem::TakeAimAndShoot()
   //weapon is aimed at the target even if it temporarily dodges behind a wall
   //or other cover)
 
-  if (m_pOwner->GetTargetSys()->isTargetShootable() ||
+
+  if ( m_pOwner->GetTargetSys()->GetTarget() && m_pOwner->GetEquipe() != m_pOwner->GetTargetBot()->GetEquipe() && (m_pOwner->GetTargetSys()->isTargetShootable() ||
       (m_pOwner->GetTargetSys()->GetTimeTargetHasBeenOutOfView() < 
-       m_dAimPersistance) )
+	  m_dAimPersistance)))
   {
+
+#ifdef LOG_CREATIONAL_STUFF
+	  debug_con << "Bot ID : " << m_pOwner->ID() << " Bot target ID : " << m_pOwner->GetTargetBot()->ID() << " Shootable : " << m_pOwner->GetTargetSys()->isTargetShootable() << "";
+#endif
+
     //the position the weapon will be aimed at
     Vector2D AimingPos = m_pOwner->GetTargetBot()->Pos();
 

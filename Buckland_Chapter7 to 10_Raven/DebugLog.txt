@@ -1,3 +1,5 @@
+
+------------------------------ Clearup -------------------------------
 NavGraph for maps/Raven_DM1.map loaded okay
 Average edge length is 23.7036
 Neighborhood range set to 24.7036
@@ -73,50 +75,18 @@ Creating a shotgun
 Creating a shotgun
 Creating a rocket_launcher
 maps/Raven_DM1.map loaded okay
-BOT 401 IS STUCK!!
-BOT 403 IS STUCK!!
-BOT 402 IS STUCK!!
-BOT 412 IS STUCK!!
-Player is exorcised from bot 421
-BOT 415 IS STUCK!!
-deleting raven bot (id = 430)
-deleting raven bot (id = 429)
-deleting raven bot (id = 422)
-deleting raven bot (id = 421)
-deleting raven bot (id = 418)
-deleting raven bot (id = 415)
-deleting raven bot (id = 412)
-deleting raven bot (id = 403)
-deleting raven bot (id = 402)
+Equipe bot 2
+Adding bot with ID 401
+Equipe bot 2
+Adding bot with ID 402
+Equipe bot 2
+Adding bot with ID 403
+Player is exorcised from bot 403
+
+------------------------------ Clearup -------------------------------
+deleting entity id: 401 of type bot(1)
 deleting raven bot (id = 401)
-Player is exorcised from bot 3082
-Player is exorcised from bot 3084
-BOT 3083 IS STUCK!!
-BOT 3083 IS STUCK!!
-BOT 3082 IS STUCK!!
-Player is exorcised from bot 3082
-BOT 3083 IS STUCK!!
-BOT 3084 IS STUCK!!
-BOT 3082 IS STUCK!!
-BOT 3084 IS STUCK!!
-BOT 3083 IS STUCK!!
-BOT 3084 IS STUCK!!
-BOT 3083 IS STUCK!!
-BOT 3082 IS STUCK!!
-BOT 3083 IS STUCK!!
-BOT 3082 IS STUCK!!
-BOT 3084 IS STUCK!!
-BOT 3082 IS STUCK!!
-BOT 3083 IS STUCK!!
-BOT 3084 IS STUCK!!
-BOT 3082 IS STUCK!!
-BOT 3082 IS STUCK!!
-BOT 3082 IS STUCK!!
-BOT 3084 IS STUCK!!
-BOT 3084 IS STUCK!!
-Player is exorcised from bot 3084
-BOT 3084 IS STUCK!!
-BOT 3082 IS STUCK!!
-deleting raven bot (id = 3082)
-deleting raven bot (id = 3083)
-deleting raven bot (id = 3084)
+deleting entity id: 402 of type bot(1)
+deleting raven bot (id = 402)
+deleting entity id: 403 of type bot(1)
+deleting raven bot (id = 403)
